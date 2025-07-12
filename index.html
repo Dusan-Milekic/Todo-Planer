@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>TO DO APP!</h1>
+    </header>
+    <main>
+        <div class="header">
+            <h2>TASKS</h2>
+            <hr id="line">
+        </div>
+        <div class="grid-holder">
+            <div class="card">
+                <h2>Task #1</h2>
+                <p>20:00 - 21:00</p>
+            </div>
+
+            <div class="card">
+                <h2>Task #2</h2>
+                <p>21:00 - 22:00</p>
+            </div>
+
+            <div class="card">
+                <h2>Task #3</h2>
+                <p>22:00 - 23:00</p>
+            </div>
+
+            <div class="card">
+                <h2>Task #4</h2>
+                <p>23:00 - 24:00</p>
+            </div>
+
+            <div class="card">
+                <h2>Task #5</h2>
+                <p>24:00 - 01:00</p>
+            </div>
+
+            <div class="card">
+                <h2>Task #6</h2>
+                <p>01:00 - 02:00</p>
+            </div>
+            
+            <div class="card">
+                <h2>Task #7</h2>
+                <p>02:00 - 03:00</p>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <hr id="line">
+        <form>
+        
+            <label for="task-input">Add a new task:</label><br>
+            <input type="text" placeholder="..." id="task-input">
+            <br>
+            <label for="deadline-input">DeadLine Time</label><br>
+            <input type="time" id="deadline-input">
+            <br>
+            <div class="flex">
+                <button type="submit" id="add">Add Task</button>
+                <button type="submit" id="remove">Remove</button>
+            </div>
+        </form>
+</footer>
+</body>
+<script src="card.js"></script>
+<script src="main.js"></script>
+</html>

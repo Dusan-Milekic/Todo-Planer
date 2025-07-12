@@ -1,0 +1,124 @@
+$blue: #448AFF;
+$light-black: #212121;
+$grey:#757575;
+$red: #d32f2f;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Luckiest Guy", cursive;
+}
+body{
+    background-color: $blue;
+}
+header{
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: calc(1.15em + 0.9vw);
+    padding: 25px 0;
+}
+#line{
+    width: 100%;
+    height: 5px;
+    background-color: $light-black;
+    border: none;
+}
+main{
+    width: 95%;
+    margin: 0 auto;
+    .header{
+        h2{
+            color : $light-black;
+            font-size: calc(1.2em + 0.4vw);
+        }
+    }
+    .grid-holder{
+        display: grid;
+        margin-top: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        
+        .card{
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            transition: all 0.3s ease;
+            
+            border-radius: 15px;
+            h2{
+                color: $light-black;
+                font-size: calc(1.2em + 0.3vw);
+            
+            }
+
+            p{
+                color: $grey;
+                font-size: calc(1em + 0.2vw);
+            }
+            
+    
+            
+        }
+        .card:hover
+        {
+             box-shadow: 2px 15px 15px rgba(247, 245, 245, 1);
+             background-color: $light-black;
+             h2{
+                color: white; 
+              }
+        }
+    }
+    
+}
+footer{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 30px;
+   
+    form{
+        width: 40%;
+        margin: 20px auto;
+        align-items: center;
+        label{
+            color:white;
+            font-size: calc(1.2em + 0.3vw);
+            
+        }
+        input{
+            
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            font-size: calc(1em + 0.2vw);
+            margin: 5px auto;
+        }
+        button{
+            padding: 10px 20px;
+            background-color: $blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: calc(1em + 0.2vw);
+            border-radius: 8px;
+            margin-top: 30px;
+            width: 100%;
+            
+        }
+        #add{
+            background-color: $light-black;
+        
+        }
+        #remove{
+            background-color: $red;
+        }
+    }
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+

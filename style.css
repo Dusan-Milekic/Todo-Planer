@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Luckiest Guy", cursive;
+}
+
+body {
+  background-color: #448AFF;
+}
+
+header {
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: calc(1.15em + 0.9vw);
+  padding: 25px 0;
+}
+
+#line {
+  width: 100%;
+  height: 5px;
+  background-color: #212121;
+  border: none;
+}
+
+main {
+  width: 95%;
+  margin: 0 auto;
+}
+main .header h2 {
+  color: #212121;
+  font-size: calc(1.2em + 0.4vw);
+}
+main .grid-holder {
+  display: grid;
+  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+main .grid-holder .card {
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: all 0.3s ease;
+  border-radius: 15px;
+}
+main .grid-holder .card h2 {
+  color: #212121;
+  font-size: calc(1.2em + 0.3vw);
+}
+main .grid-holder .card p {
+  color: #757575;
+  font-size: calc(1em + 0.2vw);
+}
+main .grid-holder .card:hover {
+  box-shadow: 2px 15px 15px rgb(247, 245, 245);
+  background-color: #212121;
+}
+main .grid-holder .card:hover h2 {
+  color: white;
+}
+
+footer {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+footer form {
+  width: 40%;
+  margin: 20px auto;
+  align-items: center;
+}
+footer form label {
+  color: white;
+  font-size: calc(1.2em + 0.3vw);
+}
+footer form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: calc(1em + 0.2vw);
+  margin: 5px auto;
+}
+footer form button {
+  padding: 10px 20px;
+  background-color: #448AFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: calc(1em + 0.2vw);
+  border-radius: 8px;
+  margin-top: 30px;
+  width: 100%;
+}
+footer form #add {
+  background-color: #212121;
+}
+footer form #remove {
+  background-color: #d32f2f;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/*# sourceMappingURL=style.css.map */
