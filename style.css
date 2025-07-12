@@ -42,7 +42,9 @@ main .grid-holder .card {
   background-color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  outline: 0px solid #212121;
   transition: all 0.3s ease;
+  cursor: pointer;
   border-radius: 15px;
 }
 main .grid-holder .card h2 {
@@ -54,11 +56,8 @@ main .grid-holder .card p {
   font-size: calc(1em + 0.2vw);
 }
 main .grid-holder .card:hover {
-  box-shadow: 2px 15px 15px rgb(247, 245, 245);
-  background-color: #212121;
-}
-main .grid-holder .card:hover h2 {
-  color: white;
+  outline: 4px solid;
+  transition: outline 50ms ease !important;
 }
 
 footer {
@@ -68,7 +67,7 @@ footer {
 }
 footer form {
   width: 40%;
-  margin: 20px auto;
+  margin: 40px auto;
   align-items: center;
 }
 footer form label {
@@ -82,6 +81,7 @@ footer form input {
   border: none;
   font-size: calc(1em + 0.2vw);
   margin: 5px auto;
+  font-family: Helvetica, sans-serif;
 }
 footer form button {
   padding: 10px 20px;

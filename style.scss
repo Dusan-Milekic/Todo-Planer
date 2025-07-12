@@ -2,6 +2,7 @@ $blue: #448AFF;
 $light-black: #212121;
 $grey:#757575;
 $red: #d32f2f;
+$light-red: #F44336;
 *{
     margin: 0;
     padding: 0;
@@ -43,31 +44,31 @@ main{
             background-color: white;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             padding: 20px;
+            outline: 0px solid $light-black;
             transition: all 0.3s ease;
-            
+            ;
+            cursor: pointer;
             border-radius: 15px;
             h2{
                 color: $light-black;
                 font-size: calc(1.2em + 0.3vw);
             
             }
+           
 
             p{
                 color: $grey;
                 font-size: calc(1em + 0.2vw);
             }
-            
+
+        }
     
-            
+        .card:hover{
+            outline: 4px solid;
+            transition: outline 50ms ease !important;
         }
-        .card:hover
-        {
-             box-shadow: 2px 15px 15px rgba(247, 245, 245, 1);
-             background-color: $light-black;
-             h2{
-                color: white; 
-              }
-        }
+        
+        
     }
     
 }
@@ -78,7 +79,7 @@ footer{
    
     form{
         width: 40%;
-        margin: 20px auto;
+        margin: 40px auto;
         align-items: center;
         label{
             color:white;
@@ -93,6 +94,7 @@ footer{
             border: none;
             font-size: calc(1em + 0.2vw);
             margin: 5px auto;
+            font-family: Helvetica, sans-serif;
         }
         button{
             padding: 10px 20px;

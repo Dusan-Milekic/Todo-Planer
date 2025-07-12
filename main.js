@@ -1,18 +1,28 @@
 let addTaskButton = document.getElementById("add");
 let removeTaskButton = document.getElementById("remove");
 order = 1;
-let allAddedCards = [];
+
+
+let addedCards;
+
 addTaskButton.addEventListener("click", function() {
     event.preventDefault();
+    let default_card = document.getElementById("defualt-card");
+    if (default_card !==null)
+        default_card.remove();
+
     let taskName = document.getElementById("task-input").value;
     let taskDate = document.getElementById("deadline-input").value;
     if (taskName != "" && taskDate !== "") {
         let newCard = new Card(taskName, taskDate, order);
-        allAddedCards.push(newCard.createCssCard());
-        alert( " has been added to your tasks.");
+        newCard.createCssCard()
+        saveToLocalStorage(taskName, taskDate, order);
         order++;
     }
     else{
         alert("Please fill in both fields.");
     }
+
+    addedCards = document.querySelectorAll(".card");
 });
+
