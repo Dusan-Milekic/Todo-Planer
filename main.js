@@ -3,6 +3,7 @@ let removeTaskButton = document.getElementById("remove");
 order = 1;
 
 
+let addedCardsJS = [];
 let addedCards;
 
 addTaskButton.addEventListener("click", function() {
@@ -15,6 +16,7 @@ addTaskButton.addEventListener("click", function() {
     let taskDate = document.getElementById("deadline-input").value;
     if (taskName != "" && taskDate !== "") {
         let newCard = new Card(taskName, taskDate, order);
+        addedCardsJS.push(newCard);
         newCard.createCssCard()
         saveToLocalStorage(taskName, taskDate, order);
         order++;
@@ -26,3 +28,13 @@ addTaskButton.addEventListener("click", function() {
     addedCards = document.querySelectorAll(".card");
 });
 
+removeTaskButton.addEventListener("click", function() {
+    event.preventDefault();
+    let allCards = document.querySelectorAll(".card");
+    for (let i = 0; i < addedCardsJS.length; i++) {
+        if (addedCardsJS[i].changed === true) {
+            allCards[i].remove();
+            deleteItemFromLocalStorage(addedCardsJS[i].id);
+        }
+    }
+});

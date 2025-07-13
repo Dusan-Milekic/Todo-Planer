@@ -33,7 +33,7 @@ class Card{
 
             
         }); // Bind 'this' to the current instance
-
+        
 
 
     }
