@@ -3,6 +3,7 @@ $light-black: #212121;
 $grey:#757575;
 $red: #d32f2f;
 $light-red: #F44336;
+$green:#35b93e;
 *{
     margin: 0;
     padding: 0;
@@ -80,7 +81,7 @@ footer{
     form{
         width: 40%;
         margin: 40px auto;
-        align-items: center;
+        
         label{
             color:white;
             font-size: calc(1.2em + 0.3vw);
@@ -114,6 +115,11 @@ footer{
         }
         #remove{
             background-color: $red;
+        }
+        #complete{
+            background-color: $green;
+            width: 70%;
+            margin: 15px auto;
         }
     }
 }

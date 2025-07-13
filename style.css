@@ -68,7 +68,6 @@ footer {
 footer form {
   width: 40%;
   margin: 40px auto;
-  align-items: center;
 }
 footer form label {
   color: white;
@@ -99,6 +98,11 @@ footer form #add {
 }
 footer form #remove {
   background-color: #d32f2f;
+}
+footer form #complete {
+  background-color: #35b93e;
+  width: 70%;
+  margin: 15px auto;
 }
 
 .flex {
