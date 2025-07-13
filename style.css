@@ -32,20 +32,44 @@ main .header h2 {
   color: #212121;
   font-size: calc(1.2em + 0.4vw);
 }
+@media screen and (min-width: 2500px) {
+  main .header h2 {
+    font-size: calc(1.1em + 0.4vw);
+  }
+}
 main .grid-holder {
   display: grid;
   margin-top: 20px;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
+  max-height: 50vh;
+  overflow: auto;
+}
+@media screen and (min-width: 2500px) {
+  main .grid-holder {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+@media screen and (max-width: 600px) {
+  main .grid-holder {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+@media screen and (max-width: 300px) {
+  main .grid-holder {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
 }
 main .grid-holder .card {
   background-color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 0px solid #212121;
   padding: 20px;
-  outline: 0px solid #212121;
-  transition: all 0.3s ease;
-  cursor: pointer;
   border-radius: 15px;
+  transition: all 0.3s ease;
+  transition: border-width 10ms ease !important;
+  cursor: pointer;
 }
 main .grid-holder .card h2 {
   color: #212121;
@@ -55,9 +79,35 @@ main .grid-holder .card p {
   color: #757575;
   font-size: calc(1em + 0.2vw);
 }
+@media screen and (max-width: 600px) {
+  main .grid-holder .card {
+    padding: 15px;
+  }
+  main .grid-holder .card h2 {
+    font-size: calc(1em + 0.2vw);
+  }
+  main .grid-holder .card p {
+    font-size: calc(0.9em + 0.1vw);
+  }
+}
+@media screen and (min-width: 2500px) {
+  main .grid-holder .card {
+    padding: 25px;
+  }
+  main .grid-holder .card h2 {
+    font-size: calc(1.2em + 0.3vw);
+  }
+  main .grid-holder .card p {
+    font-size: calc(1em + 0.2vw);
+  }
+}
 main .grid-holder .card:hover {
-  outline: 4px solid;
-  transition: outline 50ms ease !important;
+  border-width: 4px;
+  transition: border-width 10ms ease !important;
+}
+
+.grid-holder::-webkit-scrollbar {
+  width: 0px;
 }
 
 footer {
@@ -69,9 +119,25 @@ footer form {
   width: 40%;
   margin: 40px auto;
 }
+@media screen and (max-width: 600px) {
+  footer form {
+    width: 90%;
+    margin: 20px auto;
+  }
+}
 footer form label {
   color: white;
   font-size: calc(1.2em + 0.3vw);
+}
+@media screen and (max-width: 600px) {
+  footer form label {
+    font-size: calc(0.9em + 0.2vw);
+  }
+}
+@media screen and (min-width: 2500px) {
+  footer form label {
+    font-size: calc(1.1em + 0.5vw);
+  }
 }
 footer form input {
   width: 100%;
@@ -81,6 +147,16 @@ footer form input {
   font-size: calc(1em + 0.2vw);
   margin: 5px auto;
   font-family: Helvetica, sans-serif;
+}
+@media screen and (max-width: 600px) {
+  footer form input {
+    font-size: calc(0.9em + 0.1vw);
+  }
+}
+@media screen and (min-width: 2500px) {
+  footer form input {
+    font-size: calc(1.1em + 0.3vw);
+  }
 }
 footer form button {
   padding: 10px 20px;
@@ -93,22 +169,46 @@ footer form button {
   margin-top: 30px;
   width: 100%;
 }
-footer form #add {
+@media screen and (max-width: 600px) {
+  footer form button {
+    font-size: calc(0.9em + 0.1vw);
+    margin-top: 5px;
+  }
+}
+@media screen and (min-width: 2500px) {
+  footer form button {
+    font-size: calc(1.1em + 0.3vw);
+  }
+}
+footer #add {
   background-color: #212121;
 }
-footer form #remove {
+footer #remove {
   background-color: #d32f2f;
 }
-footer form #complete {
+footer #complete {
   background-color: #35b93e;
   width: 70%;
   margin: 15px auto;
+}
+@media screen and (max-width: 600px) {
+  footer #complete {
+    width: 100%;
+    margin: 5px auto;
+  }
 }
 
 .flex {
   display: flex;
   justify-content: center;
   gap: 15px;
+}
+@media screen and (max-width: 600px) {
+  .flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

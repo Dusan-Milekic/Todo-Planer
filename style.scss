@@ -4,6 +4,7 @@ $grey:#757575;
 $red: #d32f2f;
 $light-red: #F44336;
 $green:#35b93e;
+$breakpoint: 600px;
 *{
     margin: 0;
     padding: 0;
@@ -34,22 +35,45 @@ main{
             color : $light-black;
             font-size: calc(1.2em + 0.4vw);
         }
+        @media screen and (min-width: 2500px) {
+            h2{
+                font-size: calc(1.1em + 0.4vw);
+            }
+            
+        }
     }
     .grid-holder{
         display: grid;
         margin-top: 20px;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 30px;
-        
+        max-height: 50vh;
+        overflow: auto;
+        @media screen and (min-width: 2500px) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+           
+            
+        }
+
+        @media screen and (max-width: $breakpoint) {
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            
+        }
+        @media screen and (max-width: 300px) {
+            grid-template-columns: 1fr;
+            gap: 15px;
+            
+        }
         .card{
             background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 0px solid $light-black;
             padding: 20px;
-            outline: 0px solid $light-black;
-            transition: all 0.3s ease;
-            ;
-            cursor: pointer;
             border-radius: 15px;
+            transition: all 0.3s ease;
+            transition: border-width 10ms ease !important;
+            cursor: pointer;
+            
             h2{
                 color: $light-black;
                 font-size: calc(1.2em + 0.3vw);
@@ -61,31 +85,71 @@ main{
                 color: $grey;
                 font-size: calc(1em + 0.2vw);
             }
+            @media screen and (max-width: $breakpoint) {
+                h2{
+                    font-size: calc(1em + 0.2vw);
+                        
+                }
+                p{
+                    font-size: calc(0.9em + 0.1vw);
+                }
+                padding: 15px;
+          
+            }
+            @media screen and (min-width: 2500px) {
+                h2{
+                    font-size: calc(1.2em + 0.3vw);
+                }
+                p{
+                    font-size: calc(1em + 0.2vw);
+                }
+                padding: 25px;
+               
+                
+            }
 
         }
     
         .card:hover{
-            outline: 4px solid;
-            transition: outline 50ms ease !important;
+            border-width: 4px;
+            transition: border-width 10ms ease !important;
         }
         
         
     }
     
 }
+.grid-holder::-webkit-scrollbar {
+    width: 0px;
+}
+
 footer{
     width: 95%;
     margin: 0 auto;
     margin-top: 30px;
-   
     form{
         width: 40%;
         margin: 40px auto;
         
+        @media screen and (max-width: $breakpoint) {
+            width: 90%;
+            margin: 20px auto;
+        }
+
         label{
             color:white;
             font-size: calc(1.2em + 0.3vw);
             
+            @media screen and (max-width: $breakpoint) {
+                font-size: calc(0.9em + 0.2vw);
+                
+            }
+
+              @media screen and (min-width: 2500px) {
+                font-size: calc(1.1em + 0.5vw);
+                
+            
+            }
         }
         input{
             
@@ -96,6 +160,18 @@ footer{
             font-size: calc(1em + 0.2vw);
             margin: 5px auto;
             font-family: Helvetica, sans-serif;
+
+            @media screen and (max-width: $breakpoint) {
+                font-size: calc(0.9em + 0.1vw);
+                
+            }
+            @media screen and (min-width: 2500px) {
+                font-size: calc(1.1em + 0.3vw);
+                
+            
+            }
+
+
         }
         button{
             padding: 10px 20px;
@@ -108,10 +184,23 @@ footer{
             margin-top: 30px;
             width: 100%;
             
+           @media screen and (max-width: $breakpoint) {
+                font-size: calc(0.9em + 0.1vw);
+                margin-top: 5px;
+            }
+            
+             @media screen and (min-width: 2500px) {
+                font-size: calc(1.1em + 0.3vw);
+                
+            
+            }
+            
+           }
+            
         }
         #add{
             background-color: $light-black;
-        
+            
         }
         #remove{
             background-color: $red;
@@ -120,13 +209,25 @@ footer{
             background-color: $green;
             width: 70%;
             margin: 15px auto;
+
+            @media screen and (max-width: $breakpoint) {
+                width: 100%;
+                margin: 5px auto;
+            }
         }
     }
-}
+
 .flex{
     display: flex;
     justify-content: center;
     gap: 15px;
+
+    @media screen and (max-width: $breakpoint) {
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
+        
+    }
 }
 
 
