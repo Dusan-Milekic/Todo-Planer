@@ -22,12 +22,12 @@ class Card{
              if (this.changed === true){
                 card.style.backgroundColor = "white";
                 h2.style.color = "#212121";
-                card.style.outlineColor = "#212121";
+                card.style.borderColor = "#212121";
                 this.changed = false;
             }else{
                 card.style.backgroundColor = "#212121";
                 h2.style.color = "white";
-                card.style.outlineColor = "white";
+                card.style.borderColor = "white";
                 this.changed = true;
             }
 
