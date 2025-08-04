@@ -1,196 +1,736 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-         <style>
-    body {
-      background-color: #1a1a1a;
-      min-height: 100vh;
-    }
-    
-    .calendar-header {
-      background-color: #2d2d2d;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      padding: 1rem;
-    }
-    
-    .month-navigation {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-    }
-    
-    .nav-btn {
-      background: none;
-      border: 1px solid #495057;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    
-    .nav-btn:hover {
-      background-color: #495057;
-      color: white;
-    }
-    
-    .current-month {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    
-    .card {
-      min-height: 60px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      border: 1px solid #495057 !important;
-    }
-    
-    .card:hover {
-      transform: scale(1.05);
-      z-index: 2;
-      position: relative;
-    }
-    
-    .card-title {
-      font-size: 1rem;
-      margin: 0;
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 576px) {
-      .card {
-        min-height: 45px;
-      }
-      
-      .card-title {
-        font-size: 0.9rem;
-      }
-    }
-        </style>
-        <!-- Bootstrap JS i Popper (potrebno za dropdown, offcanvas itd.) -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-        <link
-            href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
-            rel="stylesheet">
-        <title>Monthly Planner</title>
-    </head>
-    <body>
-        <header class="pt-0">
-            <nav class="navbar navbar-dark bg-dark">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">ToDo Menu</a>
-                    <button class="navbar-toggler" type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasDarkNavbar"
-                        aria-controls="offcanvasDarkNavbar"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="offcanvas offcanvas-end text-bg-dark"
-                        tabindex="-1" id="offcanvasDarkNavbar"
-                        aria-labelledby="offcanvasDarkNavbarLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title"
-                                id="offcanvasDarkNavbarLabel">Todo Planers</h5>
-                            <button type="button"
-                                class="btn-close btn-close-white"
-                                data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <ul
-                                class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                <li class="nav-item">
-                                    <a class="nav-link active"
-                                        aria-current="page" href="#">Monthly
-                                        Todo</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link"
-                                        href="weekly.html">Weekly Todo</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Day
-                                        Todo</a>
-                                </li>
-                            </ul>
-                        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Calendar Planner</title>
+    <style>
+        /* Calendar-specific styles matching original design */
+        .calendar-section {
+            background-color: #448AFF;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+        
+        .calendar-header {
+            background-color: #212121;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            padding: 1rem;
+        }
+        
+        .month-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        
+        .nav-btn {
+            background: none;
+            border: 2px solid white;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Luckiest Guy", cursive;
+            font-size: calc(1em + 0.1vw);
+        }
+        
+        .nav-btn:hover {
+            background-color: white;
+            color: #212121;
+            transform: translateY(-2px);
+        }
+        
+        .current-month {
+            font-size: calc(1.5em + 0.3vw);
+            font-weight: bold;
+            font-family: "Luckiest Guy", cursive;
+            color: white;
+        }
+        
+        .weekday-header {
+            background-color: #212121 !important;
+            color: white !important;
+            border: 1px solid #757575 !important;
+        }
+        
+        .calendar-card {
+            min-height: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #757575 !important;
+            position: relative;
+            background-color: white !important;
+            color: #212121 !important;
+        }
+        
+        .calendar-card:hover {
+            transform: scale(1.05);
+            z-index: 2;
+            border-color: #212121 !important;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .calendar-card.selected {
+            background-color: #212121 !important;
+            color: white !important;
+            border-color: white !important;
+            transform: scale(1.02);
+        }
+        
+        .calendar-card.today {
+            background-color: #35b93e !important;
+            color: white !important;
+            border-color: #35b93e !important;
+            font-weight: bold;
+        }
+        
+        .calendar-card.other-month {
+            background-color: #f5f5f5 !important;
+            color: #757575 !important;
+            opacity: 0.7;
+        }
+        
+        .calendar-card.has-tasks::after {
+            content: '●';
+            position: absolute;
+            top: 5px;
+            right: 8px;
+            color: #35b93e;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .calendar-card.selected.has-tasks::after {
+            color: #35b93e;
+        }
+        
+        .selected-date-info {
+            background-color: #212121;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-family: "Luckiest Guy", cursive;
+            font-size: calc(1.1em + 0.2vw);
+        }
+        
+        .task-toggle-btn {
+            background-color: #212121;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: "Luckiest Guy", cursive;
+            font-size: calc(1.1em + 0.2vw);
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .task-toggle-btn:hover {
+            background-color: #35b93e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .tasks-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .tasks-section.show {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .calendar-card {
+                min-height: 45px;
+            }
+            
+            .calendar-card .card-title {
+                font-size: 0.9rem;
+            }
+            
+            .current-month {
+                font-size: 1.2rem;
+            }
+            
+            .calendar-section {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            
+            .nav-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="pt-0">
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">ToDo Menu</a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar"
+                    aria-controls="offcanvasDarkNavbar"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark"
+                    tabindex="-1" id="offcanvasDarkNavbar"
+                    aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Todo Planers</h5>
+                        <button type="button"
+                            class="btn-close btn-close-white"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Calendar Planer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="weekly.html">Weekly Todo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Day Todo</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </nav>
-        </header>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Calendar Section -->
+    <div class="calendar-section">
         <div class="container-xxl p-0 p-sm-3">
-    <!-- Calendar Header with Navigation -->
-    <div class="calendar-header">
-      <div class="month-navigation">
-        <button class="nav-btn" onclick="changeMonth(-1)">‹ Prethodna</button>
-        <span class="current-month" id="currentMonth">Avgust 2025</span>
-        <button class="nav-btn" onclick="changeMonth(1)">Sledeća ›</button>
-      </div>
+            <!-- Calendar Header with Navigation -->
+            <div class="calendar-header">
+                <div class="month-navigation">
+                    <button class="nav-btn" onclick="CalendarManager.changeMonth(-1)">‹ Prethodna</button>
+                    <span class="current-month" id="currentMonth">Avgust 2025</span>
+                    <button class="nav-btn" onclick="CalendarManager.changeMonth(1)">Sledeća ›</button>
+                </div>
+            </div>
+
+            <!-- Weekday Headers -->
+            <div class="row text-center g-0">
+                <div class="card rounded-0 weekday-header col p-0">
+                    <div class="card-body p-1 p-sm-3">
+                        <h4 class="card-title">Ned</h4>
+                    </div>
+                </div>
+                <div class="card rounded-0 weekday-header col p-0">
+                    <div class="card-body p-1 p-sm-3">
+                        <h4 class="card-title">Pon</h4>
+                    </div>
+                </div>
+                <div class="card rounded-0 weekday-header col p-0">
+                    <div class="card-body p-1 p-sm-3">
+                        <h4 class="card-title">Uto</h4>
+                    </div>
+                </div>
+                <div class="card rounded-0 weekday-header col p-0">
+                    <div class="card-body p-1 p-sm-3">
+                        <h4 class="card-title">Sre</h4>
+                    </div>
+                </div>
+                <div class="card rounded-0 weekday-header col p-0">
+                    <div class="card-body p-1 p-sm-3">
+                        <h4 class="card-title">Čet</h4>
+                    </div>
+                </div>
+                <div class="card rounded-0 weekday-header col p-0">
+                    <div class="card-body p-1 p-sm-3">
+                        <h4 class="card-title">Pet</h4>
+                    </div>
+                </div>
+                <div class="card rounded-0 weekday-header col p-0">
+                    <div class="card-body p-1 p-sm-3">
+                        <h4 class="card-title">Sub</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Rows -->
+            <div class="row text-center g-0" id="N1"></div>
+            <div class="row text-center g-0" id="N2"></div>
+            <div class="row text-center g-0" id="N3"></div>
+            <div class="row text-center g-0" id="N4"></div>
+            <div class="row text-center g-0" id="N5"></div>
+            <div class="row text-center g-0" id="N6"></div>
+
+            <!-- Selected Date Info -->
+            <div class="selected-date-info" id="selectedDateInfo">
+                Kliknite na datum da izaberete dan za zadatke
+            </div>
+        </div>
     </div>
 
-    <!-- Weekday Headers -->
-    <div class="row text-center g-0">
-      <div class="card rounded-0 text-white bg-dark col p-0">
-        <div class="card-body p-1 p-sm-3">
-          <h4 class="card-title">Ned</h4>
-        </div>
-      </div>
-      <div class="card rounded-0 text-white bg-dark col p-0">
-        <div class="card-body p-1 p-sm-3">
-          <h4 class="card-title">Pon</h4>
-        </div>
-      </div>
-      <div class="card rounded-0 text-white bg-dark col p-0">
-        <div class="card-body p-1 p-sm-3">
-          <h4 class="card-title">Uto</h4>
-        </div>
-      </div>
-      <div class="card rounded-0 text-white bg-dark col p-0">
-        <div class="card-body p-1 p-sm-3">
-          <h4 class="card-title">Sre</h4>
-        </div>
-      </div>
-      <div class="card rounded-0 text-white bg-dark col p-0">
-        <div class="card-body p-1 p-sm-3">
-          <h4 class="card-title">Čet</h4>
-        </div>
-      </div>
-      <div class="card rounded-0 text-white bg-dark col p-0">
-        <div class="card-body p-1 p-sm-3">
-          <h4 class="card-title">Pet</h4>
-        </div>
-      </div>
-      <div class="card rounded-0 text-white bg-dark col p-0">
-        <div class="card-body p-1 p-sm-3">
-          <h4 class="card-title">Sub</h4>
-        </div>
-      </div>
+    <!-- Toggle Tasks Button -->
+    <button class="task-toggle-btn" onclick="TaskManager.toggleTasks()">
+        <span id="toggleText">Prikaži Zadatke</span> 📅
+    </button>
+
+    <!-- Tasks Section -->
+    <div class="tasks-section" id="tasksSection">
+        <main>
+            <div class="header">
+                <h2>TASKS</h2>
+                <hr id="line">
+            </div>
+            <div class="grid-holder" id="gridHolder">
+            </div>
+        </main>
+
+        <footer>
+            <hr id="line">
+            <form>
+                <label for="task-input">Add a new task:</label><br>
+                <input type="text" placeholder="..." id="task-input">
+                <br>
+                <label for="deadline-input">DeadLine Time</label><br>
+                <input type="time" id="deadline-input">
+                <br>
+                <div class="flex">
+                    <button type="submit" id="add">Add Task</button>
+                    <button type="submit" id="remove">Remove</button>
+                </div>
+                <div class="flex">
+                    <button type="submit" id="complete">(Un) Complete Task</button>
+                </div>
+            </form>
+        </footer>
     </div>
 
-    <!-- Calendar Rows -->
-    <div class="row text-center g-0" id="N1"></div>
-    <div class="row text-center g-0" id="N2"></div>
-    <div class="row text-center g-0" id="N3"></div>
-    <div class="row text-center g-0" id="N4"></div>
-    <div class="row text-center g-0" id="N5"></div>
-    <div class="row text-center g-0" id="N6"></div>
-    <script src="calendar.js"></script>
-  </div>
+    <script>
+        // Enhanced Card class for better organization
+        class TaskCard {
+            constructor(name, date, id, calendarDate = null) {
+                this.name = name;
+                this.date = date;
+                this.id = id;
+                this.changed = false;
+                this.calendarDate = calendarDate;
+            }   
+            
+            createCssCard() {
+                const root = document.getElementById("gridHolder");
+                const card = document.createElement("div");
+                card.classList.add("card");
+                
+                const h2 = document.createElement("h2");
+                h2.textContent = this.name;
+                
+                const p = document.createElement("p");
+                p.textContent = this.date;
+                
+                card.appendChild(h2);
+                card.appendChild(p);
+                
+                if (this.calendarDate) {
+                    const dateP = document.createElement("p");
+                    dateP.textContent = `📅 ${DateUtils.formatDateForDisplay(this.calendarDate)}`;
+                    dateP.style.fontSize = "0.9em";
+                    dateP.style.color = "#448AFF";
+                    card.appendChild(dateP);
+                }
+                
+                root.appendChild(card);
 
-    </body>
-    <script src="calendar.js"></script>
-    <script src="card.js"></script>
-    <script src="main.js"></script>
-    <script src="saves.js"></script>
+                card.addEventListener("click", () => {
+                    this.toggleSelection(card, h2);
+                });
+            }
+            
+            toggleSelection(card, h2) {
+                if (this.changed) {
+                    card.style.backgroundColor = "white";
+                    h2.style.color = "#212121";
+                    card.style.borderColor = "#212121";
+                    this.changed = false;
+                } else {
+                    card.style.backgroundColor = "#212121";
+                    h2.style.color = "white";
+                    card.style.borderColor = "white";
+                    this.changed = true;
+                }
+            }
+        }
+
+        // Utility class for date operations
+        class DateUtils {
+            static monthNames = [
+                'Januar', 'Februar', 'Mart', 'April', 'Maj', 'Jun',
+                'Jul', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'
+            ];
+
+            static daysInMonth(month, year) {
+                const daysInMonths = [
+                    31,
+                    (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) ? 29 : 28,
+                    31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+                ];
+                return daysInMonths[month];
+            }
+
+            static getFirstDayOfMonth(month, year) {
+                return new Date(year, month, 1).getDay();
+            }
+
+            static formatDateString(day, month, year) {
+                return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            }
+
+            static formatDateForDisplay(dateString) {
+                const [year, month, day] = dateString.split('-');
+                return `${day}.${month}.${year}`;
+            }
+
+            static isToday(day, month, year) {
+                const today = new Date();
+                return day === today.getDate() && 
+                       month === today.getMonth() && 
+                       year === today.getFullYear();
+            }
+        }
+
+        // Storage class for localStorage operations
+        class StorageManager {
+            static saveTask(taskName, taskDate, id, dateString) {
+                let tasks = JSON.parse(localStorage.getItem("calendarTasks")) || {};
+                if (!tasks[dateString]) {
+                    tasks[dateString] = [];
+                }
+                tasks[dateString].push({ taskName, taskDate, id });
+                localStorage.setItem("calendarTasks", JSON.stringify(tasks));
+            }
+
+            static getTasksForDate(dateString) {
+                let tasks = JSON.parse(localStorage.getItem("calendarTasks")) || {};
+                return tasks[dateString] || [];
+            }
+
+            static deleteTask(id, dateString) {
+                let tasks = JSON.parse(localStorage.getItem("calendarTasks")) || {};
+                if (tasks[dateString]) {
+                    tasks[dateString] = tasks[dateString].filter(task => task.id !== id);
+                    if (tasks[dateString].length === 0) {
+                        delete tasks[dateString];
+                    }
+                    localStorage.setItem("calendarTasks", JSON.stringify(tasks));
+                }
+            }
+
+            static hasTasksOnDate(dateString) {
+                return this.getTasksForDate(dateString).length > 0;
+            }
+        }
+
+        // Calendar management class
+        class CalendarManager {
+            static displayMonth = new Date().getMonth();
+            static displayYear = new Date().getFullYear();
+            static selectedDate = null;
+            static selectedDateString = null;
+
+            static loadDays() {
+                const currentDate = new Date();
+                const today = currentDate.getDate();
+                const currentMonth = currentDate.getMonth();
+                const currentYear = currentDate.getFullYear();
+                
+                const daysMax = DateUtils.daysInMonth(this.displayMonth, this.displayYear);
+                const firstDayOfWeek = DateUtils.getFirstDayOfMonth(this.displayMonth, this.displayYear);
+                
+                const prevMonth = this.displayMonth === 0 ? 11 : this.displayMonth - 1;
+                const prevYear = this.displayMonth === 0 ? this.displayYear - 1 : this.displayYear;
+                const prevMonthDays = DateUtils.daysInMonth(prevMonth, prevYear);
+                
+                const rows = ['N1', 'N2', 'N3', 'N4', 'N5', 'N6'].map(id => document.getElementById(id));
+                
+                rows.forEach(row => {
+                    if (row) row.innerHTML = '';
+                });
+                
+                let dayCounter = 1;
+                let nextMonthDayCounter = 1;
+                
+                for (let week = 0; week < 6; week++) {
+                    for (let day = 0; day < 7; day++) {
+                        const cardElement = this.createDayCard(
+                            week, day, firstDayOfWeek, daysMax, dayCounter, nextMonthDayCounter,
+                            prevMonthDays, prevMonth, prevYear, today, currentMonth, currentYear
+                        );
+                        
+                        if (cardElement.isCurrentMonth) dayCounter++;
+                        else if (dayCounter > daysMax) nextMonthDayCounter++;
+                        
+                        if (rows[week]) {
+                            rows[week].appendChild(cardElement.element);
+                        }
+                    }
+                }
+                
+                this.updateMonthHeader();
+                TaskManager.updateTasksDisplay();
+            }
+
+            static createDayCard(week, day, firstDayOfWeek, daysMax, dayCounter, nextMonthDayCounter,
+                               prevMonthDays, prevMonth, prevYear, today, currentMonth, currentYear) {
+                const cardElement = document.createElement("div");
+                let isCurrentMonth = true;
+                let dayNumber;
+                let dateString;
+                let isToday = false;
+                
+                if (week === 0 && day < firstDayOfWeek) {
+                    dayNumber = prevMonthDays - firstDayOfWeek + day + 1;
+                    isCurrentMonth = false;
+                    dateString = DateUtils.formatDateString(dayNumber, prevMonth, prevYear);
+                    cardElement.className = 'calendar-card other-month col p-0 rounded-0';
+                } else if (dayCounter <= daysMax) {
+                    dayNumber = dayCounter;
+                    isToday = DateUtils.isToday(dayNumber, this.displayMonth, this.displayYear);
+                    dateString = DateUtils.formatDateString(dayNumber, this.displayMonth, this.displayYear);
+                    
+                    let className = 'calendar-card col p-0 rounded-0';
+                    if (isToday) className += ' today';
+                    cardElement.className = className;
+                } else {
+                    dayNumber = nextMonthDayCounter;
+                    isCurrentMonth = false;
+                    const nextMonth = this.displayMonth === 11 ? 0 : this.displayMonth + 1;
+                    const nextYear = this.displayMonth === 11 ? this.displayYear + 1 : this.displayYear;
+                    dateString = DateUtils.formatDateString(dayNumber, nextMonth, nextYear);
+                    cardElement.className = 'calendar-card other-month col p-0 rounded-0';
+                }
+                
+                if (StorageManager.hasTasksOnDate(dateString)) {
+                    cardElement.classList.add('has-tasks');
+                }
+                
+                const bodyElement = document.createElement("div");
+                bodyElement.classList.add('card-body', 'p-1', 'p-sm-3');
+                
+                const titleElement = document.createElement("h4");
+                titleElement.classList.add('card-title', 'm-0');
+                titleElement.innerText = dayNumber;
+                
+                bodyElement.appendChild(titleElement);
+                cardElement.appendChild(bodyElement);
+                
+                cardElement.addEventListener('click', () => {
+                    this.selectDate(dayNumber, isCurrentMonth, dateString, cardElement);
+                });
+                
+                return { element: cardElement, isCurrentMonth };
+            }
+
+            static selectDate(day, isCurrentMonth, dateString, cardElement) {
+                if (!isCurrentMonth) return;
+                
+                document.querySelectorAll('.calendar-card.selected').forEach(el => {
+                    el.classList.remove('selected');
+                });
+                
+                cardElement.classList.add('selected');
+                
+                this.selectedDate = day;
+                this.selectedDateString = dateString;
+                
+                document.getElementById('selectedDateInfo').textContent = 
+                    `Izabran datum: ${DateUtils.formatDateForDisplay(dateString)}`;
+                
+                TaskManager.updateTasksDisplay();
+            }
+
+            static changeMonth(direction) {
+                this.displayMonth += direction;
+                
+                if (this.displayMonth > 11) {
+                    this.displayMonth = 0;
+                    this.displayYear++;
+                } else if (this.displayMonth < 0) {
+                    this.displayMonth = 11;
+                    this.displayYear--;
+                }
+                
+                this.loadDays();
+            }
+
+            static updateMonthHeader() {
+                document.getElementById('currentMonth').textContent = 
+                    `${DateUtils.monthNames[this.displayMonth]} ${this.displayYear}`;
+            }
+        }
+
+        // Task management class
+        class TaskManager {
+            static order = 1;
+            static addedCardsJS = [];
+            static tasksVisible = false;
+
+            static toggleTasks() {
+                const tasksSection = document.getElementById('tasksSection');
+                const toggleText = document.getElementById('toggleText');
+                
+                this.tasksVisible = !this.tasksVisible;
+                
+                if (this.tasksVisible) {
+                    tasksSection.classList.add('show');
+                    toggleText.textContent = 'Sakrij Zadatke';
+                } else {
+                    tasksSection.classList.remove('show');
+                    toggleText.textContent = 'Prikaži Zadatke';
+                }
+            }
+
+            static updateTasksDisplay() {
+                const gridHolder = document.getElementById('gridHolder');
+                gridHolder.innerHTML = '';
+                this.addedCardsJS = [];
+                
+                if (CalendarManager.selectedDateString) {
+                    const tasks = StorageManager.getTasksForDate(CalendarManager.selectedDateString);
+                    
+                    if (tasks.length === 0) {
+                        const defaultCard = new TaskCard("Nema zadataka za ovaj dan", "😊", 0, CalendarManager.selectedDateString);
+                        defaultCard.createCssCard();
+                        return;
+                    }
+                    
+                    tasks.forEach(task => {
+                        const newCard = new TaskCard(task.taskName, task.taskDate, task.id, CalendarManager.selectedDateString);
+                        this.addedCardsJS.push(newCard);
+                        newCard.createCssCard();
+                    });
+                } else {
+                    const defaultCard = new TaskCard("Izaberite datum da vidite zadatke", "📅", 0);
+                    defaultCard.createCssCard();
+                }
+            }
+
+            static addTask() {
+                if (!CalendarManager.selectedDateString) {
+                    alert("Molimo izaberite datum pre dodavanja zadatka!");
+                    return;
+                }
+                
+                const taskName = document.getElementById("task-input").value;
+                const taskDate = document.getElementById("deadline-input").value;
+                
+                if (taskName !== "" && taskDate !== "") {
+                    const newCard = new TaskCard(taskName, taskDate, this.order, CalendarManager.selectedDateString);
+                    this.addedCardsJS.push(newCard);
+                    newCard.createCssCard();
+                    StorageManager.saveTask(taskName, taskDate, this.order, CalendarManager.selectedDateString);
+                    this.order++;
+                    
+                    document.getElementById("task-input").value = "";
+                    document.getElementById("deadline-input").value = "";
+                    
+                    CalendarManager.loadDays();
+                    this.reselectCurrentDate();
+                } else {
+                    alert("Molimo popunite sva polja.");
+                }
+            }
+
+            static removeTask() {
+                if (!CalendarManager.selectedDateString) return;
+                
+                const allCards = document.querySelectorAll("#gridHolder .card");
+                for (let i = this.addedCardsJS.length - 1; i >= 0; i--) {
+                    if (this.addedCardsJS[i].changed === true) {
+                        allCards[i].remove();
+                        StorageManager.deleteTask(this.addedCardsJS[i].id, CalendarManager.selectedDateString);
+                        this.addedCardsJS.splice(i, 1);
+                    }
+                }
+                CalendarManager.loadDays();
+                this.reselectCurrentDate();
+            }
+
+            static completeTask() {
+                const allCards = document.querySelectorAll("#gridHolder .card");
+                for (let i = 0; i < this.addedCardsJS.length; i++) {
+                    if (this.addedCardsJS[i].changed === true) {
+                        const isCompleted = allCards[i].style.textDecoration === "line-through 4px";
+                        
+                        if (!isCompleted) {
+                            allCards[i].style.textDecoration = "line-through";
+                            allCards[i].style.textDecorationThickness = "4px";
+                        } else {
+                            allCards[i].style.textDecoration = "none";
+                            allCards[i].style.textDecorationThickness = "0px";
+                        }
+                        
+                        allCards[i].style.backgroundColor = "white";
+                        allCards[i].querySelector("h2").style.color = "#212121";
+                        allCards[i].style.outlineColor = "#212121";
+                        this.addedCardsJS[i].changed = false;
+                    }
+                }
+            }
+
+            static reselectCurrentDate() {
+                setTimeout(() => {
+                    document.querySelectorAll('.calendar-card').forEach(card => {
+                        const cardDate = card.querySelector('.card-title').textContent;
+                        if (parseInt(cardDate) === CalendarManager.selectedDate && CalendarManager.selectedDateString) {
+                            card.classList.add('selected');
+                        }
+                    });
+                }, 100);
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            CalendarManager.loadDays();
+            
+            // Event listeners
+            document.getElementById("add").addEventListener("click", function(event) {
+                event.preventDefault();
+                TaskManager.addTask();
+            });
+
+            document.getElementById("remove").addEventListener("click", function(event) {
+                event.preventDefault();
+                TaskManager.removeTask();
+            });
+
+            document.getElementById("complete").addEventListener("click", function(event) {
+                event.preventDefault();
+                TaskManager.completeTask();
+            });
+        });
+    </script>
+</body>
 </html>
