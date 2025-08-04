@@ -13,7 +13,7 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
             rel="stylesheet">
-        <title>Document</title>
+        <title>Monthly Planner</title>
     </head>
     <body>
         <header class="pt-0">
@@ -42,14 +42,14 @@
                             <ul
                                 class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link"
+                                    <a class="nav-link "
                                         aria-current="page" href="monthly.html">Monthly Todo</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Weekly Todo</a>
+                                    <a class="nav-link active" href="#">Weekly Todo</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#">Day Todo</a>
+                                    <a class="nav-link" href="index.html">Day Todo</a>
                                 </li>
                             </ul>
                         </div>
@@ -57,33 +57,8 @@
                 </div>
             </nav>
         </header>
-        <main>
-            <div class="header">
-                <h2>TASKS</h2>
-                <hr id="line">
-            </div>
-            <div class="grid-holder">
-            </div>
-        </main>
-        <footer>
-            <hr id="line">
-            <form>
-
-                <label for="task-input">Add a new task:</label><br>
-                <input type="text" placeholder="..." id="task-input">
-                <br>
-                <label for="deadline-input">DeadLine Time</label><br>
-                <input type="time" id="deadline-input">
-                <br>
-                <div class="flex">
-                    <button type="submit" id="add">Add Task</button>
-                    <button type="submit" id="remove">Remove</button>
-                </div>
-                <div class="flex"><button type="submit" id="complete">(Un)
-                        Complete Task</button></div>
-
-            </form>
-        </footer>
+        
+        
     </body>
  
     <script src="card.js"></script>
