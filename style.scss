@@ -5,6 +5,9 @@ $red: #d32f2f;
 $light-red: #F44336;
 $green:#35b93e;
 $breakpoint: 600px;
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
 *{
     margin: 0;
     padding: 0;
@@ -13,6 +16,7 @@ $breakpoint: 600px;
 }
 body{
     background-color: $blue;
+    position: relative;
 }
 header{
     color: white;
@@ -30,6 +34,7 @@ header{
 main{
     width: 95%;
     margin: 0 auto;
+    
     .header{
         h2{
             color : $light-black;
